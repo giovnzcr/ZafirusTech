@@ -1,0 +1,7 @@
+{
+  "name": "ZafirusTech",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
