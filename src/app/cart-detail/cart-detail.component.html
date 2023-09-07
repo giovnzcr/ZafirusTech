@@ -1,0 +1,10 @@
+<ion-button [routerLink]="''">
+  Go Back
+</ion-button>
+<ion-list>
+  <app-cart-items [isForDelete]="true" *ngFor="let cartItem of (cartItems$()| async);let index = index"[index]="index" [cartItem]="cartItem"/>
+</ion-list>
+
+<ion-label>
+  Your Total is {{(cartItemsTotal$() | async| currency)}}
+</ion-label>

@@ -1,7 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="primary" >
+      <ion-button  [routerLink]="'detail/'" fill="outline">
+        Cart {{(getCartItems$() | async)?.length}}
+        <ion-icon slot="end" name="cart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
-      Inbox
+      My Shop
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,12 +20,16 @@
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">
-        Inbox
+        My Store
       </ion-title>
+      <ion-button slot="end">
+        Cart
+      </ion-button>
+     
     </ion-toolbar>
   </ion-header>
   
   <ion-list>
-    <app-message *ngFor="let message of getMessages()" [message]="message"></app-message>
+    <app-cart-items *ngFor="let cartItem of getCartItems()" [cartItem]="cartItem"/>
   </ion-list>
 </ion-content>

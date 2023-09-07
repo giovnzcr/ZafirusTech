@@ -1,8 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { RefresherCustomEvent } from '@ionic/angular';
-import { MessageComponent } from '../message/message.component';
+
 
 import { DataService, Message } from '../services/data.service';
+import { cartItem } from '../cart-items/cart-item.model';
+import { CartService } from '../services/cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +14,9 @@ import { DataService, Message } from '../services/data.service';
 })
 export class HomePage {
   private data = inject(DataService);
-  constructor() {}
+  constructor(
+    private cartService: CartService
+  ) {}
 
   refresh(ev: any) {
     setTimeout(() => {
@@ -21,5 +26,13 @@ export class HomePage {
 
   getMessages(): Message[] {
     return this.data.getMessages();
+  }
+
+  getCartItems(): cartItem[] {
+    return this.data.getCartItems();
+  }
+  getCartItems$():Observable<cartItem[]> {
+    return this.cartService.getCartItems();
+
   }
 }

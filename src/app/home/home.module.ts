@@ -5,16 +5,18 @@ import { FormsModule } from '@angular/forms';
 
 import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
-import { MessageComponentModule } from '../message/message.module';
+import { CartItemsModule } from '../cart-items/cart-items.module';
+import { CartService } from '../services/cart.service';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MessageComponentModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    CartItemsModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
+ 
 })
 export class HomePageModule {}

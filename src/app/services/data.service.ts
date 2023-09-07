@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { cartItem } from '../cart-items/cart-item.model';
 
 export interface Message {
   fromName: string;
@@ -12,6 +13,41 @@ export interface Message {
   providedIn: 'root'
 })
 export class DataService {
+
+  private cartItems: cartItem[] = [
+    {
+      "itemImage": "https://loremflickr.com/320/240",
+      "itemTitle": "Product 1",
+      "itemDescription": "Description for Product 1",
+      itemPrice : 2
+    },
+    {
+      "itemImage": "https://loremflickr.com/320/240",
+      "itemTitle": "Product 2",
+      "itemDescription": "Description for Product 2",
+      itemPrice:3
+    },
+    {
+      "itemImage": "https://loremflickr.com/320/240",
+      "itemTitle": "Product 3",
+      "itemDescription": "Description for Product 3",
+      itemPrice :1
+    },
+    {
+      "itemImage": "https://loremflickr.com/320/240",
+      "itemTitle": "Product 4",
+      "itemDescription": "Description for Product 4",
+      itemPrice:5
+    },
+    {
+      "itemImage": "https://loremflickr.com/320/240",
+      "itemTitle": "Product 5",
+      "itemDescription": "Description for Product 5",
+      itemPrice:10
+    }
+  ]
+  
+
   public messages: Message[] = [
     {
       fromName: 'Matt Chorsey',
@@ -72,6 +108,10 @@ export class DataService {
   ];
 
   constructor() { }
+
+  getCartItems():cartItem[] {
+    return this.cartItems;
+  }
 
   public getMessages(): Message[] {
     return this.messages;

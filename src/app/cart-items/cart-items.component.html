@@ -1,0 +1,12 @@
+<ion-item>
+  <ion-thumbnail slot="start">
+    <img alt="Item Image" [src]="cartItem?.itemImage">
+  </ion-thumbnail>
+  <ion-label>
+    <h1>{{cartItem?.itemTitle}}</h1>
+    <p>{{cartItem?.itemDescription}} {{cartItem?.itemPrice | currency}}</p>
+  </ion-label>
+  <ion-button *ngIf="!isForDelete" (click)="onAddToCart(cartItem)" slot="end">Add to Cart</ion-button>
+  <ion-button *ngIf="isForDelete" (click)="onDeleteItemFromCart(index)" slot="end">Delete from Cart</ion-button>
+
+</ion-item>
