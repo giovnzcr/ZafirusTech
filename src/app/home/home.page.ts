@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RefresherCustomEvent } from '@ionic/angular';
 
 
@@ -12,11 +12,18 @@ import { Observable } from 'rxjs';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
+
+
+  getCartItems$: Observable<cartItem[]> = new Observable<cartItem[]>();
+
   private data = inject(DataService);
   constructor(
     private cartService: CartService
   ) {}
+  ngOnInit(): void {
+    this.getCartItemsObservable();
+  }
 
   refresh(ev: any) {
     setTimeout(() => {
@@ -31,8 +38,8 @@ export class HomePage {
   getCartItems(): cartItem[] {
     return this.data.getCartItems();
   }
-  getCartItems$():Observable<cartItem[]> {
-    return this.cartService.getCartItems();
+  getCartItemsObservable():void {
+    this.getCartItems$ =  this.cartService.getCartItems();
 
   }
 }

@@ -10,17 +10,21 @@ import { CartService } from '../services/cart.service';
 })
 export class CartDetailComponent  implements OnInit {
 
+  cartItemsTotal$: Observable<number> = new Observable<number>();
+
   constructor(
     private cartService: CartService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.cartItemsTotals();
+  }
 
   cartItems$():Observable<cartItem[]>{
     return this.cartService.getCartItems();
   }
-  cartItemsTotal$(): Observable<number> { debugger
-    return this.cartItems$().pipe(
+  cartItemsTotals(): void {
+    this.cartItemsTotal$ =  this.cartItems$().pipe(
       map(item => item.map(
         itemTotal => itemTotal.itemPrice
       )),
